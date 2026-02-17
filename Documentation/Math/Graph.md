@@ -194,12 +194,6 @@ x^2-4*x+3
 
 ## Integration
 
-Add to shell:
 
-```c
-if (strcmp(command, "graph") == 0) {
-    graphics_math_start();
-}
-```
 
 Requires VGA text buffer and keyboard port access.
