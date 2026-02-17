@@ -78,7 +78,7 @@ Monitor shows received packets with:
 ## Limitations
 
 **Display only:**
-Monitor is read-only. Does not send packets or respond to requests.
+Monitor is read-only. 
 
 **No filtering:**
 Shows all received packets. No option to filter by type or address.
@@ -98,7 +98,7 @@ Checks for packets every 100,000 CPU cycles.
 Intel e1000 (vendor ID 0x8086, device ID 0x100E) only.
 
 **PCI location:**
-Automatically detected during init. Bus/slot/function stored for driver access.
+Automatically detected during init. 
 
 **Exit behavior:**
 Clean exit via ESC. Returns to shell prompt immediately.
