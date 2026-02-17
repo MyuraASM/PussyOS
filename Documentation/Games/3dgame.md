@@ -148,13 +148,7 @@ TEXT_COLS:      80
 TEXT_ROWS:      25
 ```
 
-## Color Codes
 
-**Walls:** 0x07-0x0E (various colors)
-**Enemies:** 0x0C (red), 0x09 (blue)
-**Health:** 0x0A (green)
-**HUD:** 0x0C (HP), 0x0F (wave), 0x0E (score), 0x0A (multiplier)
-**Game Over:** 0x4F (red background)
 
 ## Integration
 
@@ -172,4 +166,4 @@ Requires VGA text buffer access and port I/O.
 
 
 
-Lower value = faster framerate.
+
