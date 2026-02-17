@@ -111,12 +111,9 @@ Clean exit via ESC. Returns to shell prompt immediately.
 netmon_init();
 ```
 
-**Shell command:**
-```c
-if (strcmp(command, "netmon") == 0) {
-    netmon_start();
-}
-```
+
+
+
 
 
 
