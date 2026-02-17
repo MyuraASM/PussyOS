@@ -187,11 +187,4 @@ buffer[...].color = 0x0F;  // White ball
 
 VGA color format: 0xBF (B=background 0-7, F=foreground 0-15)
 
-## Known Behavior
 
-- Ball can move diagonally when hitting paddle edges
-- Maximum Y velocity is ±2 (paddle height / 2)
-- No AI opponent (requires two players)
-- Ball doesn't accelerate over time
-- Game doesn't save high scores
-- Trail resets on any collision to prevent visual artifacts
