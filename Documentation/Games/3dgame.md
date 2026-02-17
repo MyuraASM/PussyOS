@@ -152,13 +152,7 @@ TEXT_ROWS:      25
 
 ## Integration
 
-Add to shell:
 
-```c
-if (strcmp(command, "3dshooter") == 0) {
-    walking_simulator_start();
-}
-```
 
 Requires VGA text buffer access and port I/O.
 
