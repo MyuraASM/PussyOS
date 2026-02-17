@@ -123,7 +123,7 @@ MAX_SNAKE_LEN:   100
 **Timing:**
 - Horizontal movement: 300,000 tick threshold
 - Vertical movement: 600,000 tick threshold (slower)
-- This makes diagonal movement feel smoother
+
 
 **Random Number Generation:**
 
@@ -169,39 +169,9 @@ Uses `next_dir_x` and `next_dir_y` to buffer next direction. Applied on next tic
 - ESC: 0x01
 - R: 0x13
 
-## AI Implementation Details
 
-**Pathfinding Algorithm:**
 
-Greedy approach with safety fallback:
 
-```c
-1. Calculate direction to food (dx, dy)
-2. Build priority list of moves:
-   - If diagonal needed: try horizontal, then vertical
-   - If straight needed: try that direction, then perpendicular options
-   - Add remaining directions as fallback
-3. Test each move in priority order
-4. For each move:
-   - Skip if it reverses direction
-   - Check if move will eat food (affects collision)
-   - Use is_safe() with will_grow flag
-   - Take first safe move found
-5. If no safe move: keep current direction
-```
-
-**Critical AI Bug Fix:**
-
-The AI checks `will_eat` before calling `is_safe()`:
-
-```c
-int will_eat = (nx == food_x && ny == food_y);
-if (is_safe(nx, ny, will_eat)) {
-    // Safe to move
-}
-```
-
-This ensures collision detection knows whether the tail will move, preventing the AI from thinking it will collide with its own tail when it won't.
 
 ## Integration
 
@@ -252,30 +222,14 @@ buffer[idx].color = 0x07;  // Walls
 buffer[idx].color = 0x08;  // Background
 ```
 
-**AI Aggressiveness:**
-
-To make AI more cautious, modify `ai_choose_direction()` to look further ahead:
-- Check 2-3 moves ahead instead of 1
-- Avoid moves that lead to dead ends
-- Prefer moves with more escape routes
-
-Current AI is intentionally aggressive for demonstration.
 
 ## Known Behavior
 
 **Speed Asymmetry:**
 Vertical movement is intentionally slower (2x threshold). This compensates for VGA text mode's non-square character cells, making diagonal movement feel more natural.
 
-**Maximum Score:**
-With 100 max segments and 10 points per food:
-- Theoretical max: 970 points (97 food eaten to reach 100 length)
-- Practical max: Lower due to space constraints
 
-**AI Limitations:**
-- No pathfinding (direct line to food)
-- Can trap itself in corners
-- No lookahead beyond immediate collision
-- Will fail on very long snakes in tight spaces
+
 
 **Food Spawn:**
 In rare cases with full screen, may fail to find empty spot after 1000 attempts. Snake would be too long for playable area anyway.
@@ -288,11 +242,3 @@ Game restores terminal state on exit:
 - Shows shell prompt ">"
 - Returns to normal shell operation
 
-## Algorithm Complexity
-
-**Collision Check:** O(n) where n = snake length
-**Food Placement:** O(n) worst case, average O(1)
-**AI Decision:** O(1) - checks fixed 4 directions
-**Render:** O(w×h) = O(1920) fixed screen size
-
-Performance remains constant regardless of snake length due to fixed iteration counts.
