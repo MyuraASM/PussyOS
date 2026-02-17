@@ -145,13 +145,8 @@ reset_trail()     // Reset ball trail positions
 
 ## Integration
 
-Add to shell command handler:
 
-```c
-if (strcmp(command, "pong") == 0) {
-    pong_start();
-}
-```
+
 
 Requires:
 - VGA text buffer access (`struct Char* buffer`)
