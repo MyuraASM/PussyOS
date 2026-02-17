@@ -239,12 +239,9 @@ Screen size: 80x25
 
 Color format: 0xBF (B=background 0-7, F=foreground 0-15)
 
-Common colors:
-- 0x0F = White on black
-- 0x0C = Red on black
-- 0x0A = Green on black
-- 0x0E = Yellow on black
-- 0x70 = Black on white
+Colors go from 1 to 15
+
+
 
 ## System Commands
 
