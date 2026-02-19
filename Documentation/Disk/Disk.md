@@ -2,7 +2,7 @@
 
 ## Overview
 
-`Disk.c` is a low-level ATA (Advanced Technology Attachment) disk driver written in C for a bare-metal or OS kernel environment. It provides the minimal functionality needed to read and write 512-byte sectors from a hard drive using direct port I/O and LBA (Logical Block Addressing) mode.
+`Disk.c` is a low-level ATA (Advanced Technology Attachment) disk driver written in C for PussyOS. It provides the minimal functionality needed to read and write 512-byte sectors from a hard drive using direct port I/O and LBA (Logical Block Addressing) mode.
 
 ---
 
