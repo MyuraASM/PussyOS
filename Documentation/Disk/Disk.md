@@ -1,4 +1,4 @@
-# Disk.c — Objective Documentation
+# Disk.c
 
 ## Overview
 
