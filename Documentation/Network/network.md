@@ -74,4 +74,4 @@ r_icmp->checksum = checksum_aligned(r_icmp, sizeof(struct icmp_header) + payload
 
 `handle_packet` is the single entry point that the driver calls for every received frame. It reads the EtherType field to determine what kind of packet arrived and routes accordingly.
 
-ARP packets are dispatched immediately regardless of IP destination. IPv4 packets are first filtered by destination IP — anything not addressed to `my_ip` is dropped — and then dispatched to either `handle_icmp` or `handle_udp` based on the protocol field in the IP header.
+ARP packets are dispatched immediately regardless of IP destination. IPv4 packets are first filtered by destination IP  anything not addressed to `my_ip` is dropped  and then dispatched to either `handle_icmp` or `handle_udp` based on the protocol field in the IP header.
