@@ -11,8 +11,8 @@
 The file opens by declaring the system's network identity. The MAC address and IP address are hardcoded globals that the rest of the network stack references via `extern`.
 
 ```c
-uint8_t  my_mac[6] = {0x52, 0x54, 0x00, 0x12, 0x34, 0x56};
-uint32_t my_ip     = 0xC0A800C8;   // 192.168.0.200 (host order)
+uint8_t  my_mac[6] = {example};
+uint32_t my_ip     = example;
 ```
 
 The IP is stored in host byte order throughout, with conversion to network order happening at the point of packet construction. A `network_silent` flag is also declared here, intended to suppress output when set.
