@@ -124,6 +124,7 @@ arp -n
 Look for the entry matching your router's IP and copy the physical address.
 
 netsettings are not saved to disk yet, you will need to redo them on each reboot. This will be fixed in a future update.
+and the gateway mac will be solved too on boot.
 
 ---
 
