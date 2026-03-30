@@ -9,7 +9,10 @@ A custom x86_64 operating system built from scratch.
 
 ---
 
-## Network setup (Windows)
+## Network setup
+
+### Windows
+
 Before running the OS you need to create a TAP adapter and bridge it to your Ethernet port.
 
 **1. Install a TAP driver**
@@ -26,9 +29,11 @@ Your TAP adapter will now share the same network as your wired connection and th
 
 In Network Connections, right-click the TAP adapter and rename it to `tap0`. This matches the interface name used in the QEMU launch command.
 
----
+
 
 ## Running
+
+### Windows
 ```powershell
 # In PussyOS dir:
 & "C:\Program Files\qemu\qemu-system-x86_64.exe" `
@@ -38,9 +43,22 @@ In Network Connections, right-click the TAP adapter and rename it to `tap0`. Thi
     -device e1000,netdev=net0
 ```
 
-The disk image (`disk.img`) is used to persist the filesystem between sessions. If you don't have one yet, create a blank image using qemu:
-
+Create a blank disk image if you don't have one:
 ```powershell
+qemu-img create disk.img 16M
+```
+
+### Linux
+```bash
+qemu-system-x86_64 \
+    -cdrom dist/x86_64/kernel.iso \
+    -drive file=disk.img,format=raw,index=0,media=disk \
+    -netdev tap,id=net0,ifname=tap0 \
+    -device e1000,netdev=net0
+```
+
+Create a blank disk image if you don't have one:
+```bash
 qemu-img create disk.img 16M
 ```
 
@@ -77,23 +95,35 @@ Once you are in the shell, run `netsettings` to open the network configuration s
 
 There are four fields to configure:
 
-**My IP**  the IP address the OS will use on your network. Pick any free address on your local subnet, for example `192.168.1.150`. Make sure nothing else on your network is using it.
+**My IP** — the IP address the OS will use on your network. Pick any free address on your local subnet, for example `192.168.1.150`. Make sure nothing else on your network is using it.
 
-**Gateway IP**  your router's IP address. You can find it on your host machine by running:
+**Gateway IP** — your router's IP address. Find it by running:
+
+Windows:
 ```powershell
 ipconfig
 ```
-Look for "Default Gateway".
+Linux:
+```bash
+ip route | grep default
+```
+Look for "Default Gateway" (Windows) or the address after "via" (Linux).
 
-**My MAC**  the virtual MAC address for the OS. The default is fine to leave as is, but it must be unique on your network. If you change it, use the format `xx:xx:xx:xx:xx` with lowercase hex digits.
+**My MAC** — the virtual MAC address for the OS. The default is fine to leave as is.
 
-**Gateway MAC** your router's MAC address. Find it on your host machine by running:
+**Gateway MAC** — your router's MAC address. Find it by running:
+
+Windows:
 ```powershell
 arp -a
 ```
-Look for the entry matching your router IP and copy the physical address.
+Linux:
+```bash
+arp -n
+```
+Look for the entry matching your router's IP and copy the physical address.
 
-NETSETTINGS AREN'T SAVED YET YOU HAVE TO REDOO THEM ON REBOOT, ILL FIX IT PROMISSE <3
+netsettings are not saved to disk yet, you will need to redo them on each reboot. This will be fixed in a future update.
 
 ---
 
