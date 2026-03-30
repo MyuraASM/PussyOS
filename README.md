@@ -1,5 +1,5 @@
 # PussyOS
-A custom x86_64 operating system built from scratch. Textmode shell, filesystem, networked apps, games, and two scripting runtimes.
+A custom x86_64 operating system built from scratch.
 
 ---
 
