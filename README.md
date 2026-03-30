@@ -71,6 +71,32 @@ That saves the filesystem to disk so your changes persist on the next boot.
 
 ---
 
+## Network configuration inside the OS
+
+Once you are in the shell, run `netsettings` to open the network configuration screen. Use the arrow keys to select a field and Enter to edit it.
+
+There are four fields to configure:
+
+**My IP**  the IP address the OS will use on your network. Pick any free address on your local subnet, for example `192.168.1.150`. Make sure nothing else on your network is using it.
+
+**Gateway IP**  your router's IP address. You can find it on your host machine by running:
+```powershell
+ipconfig
+```
+Look for "Default Gateway".
+
+**My MAC**  the virtual MAC address for the OS. The default is fine to leave as is, but it must be unique on your network. If you change it, use the format `xx:xx:xx:xx:xx` with lowercase hex digits.
+
+**Gateway MAC** your router's MAC address. Find it on your host machine by running:
+```powershell
+arp -a
+```
+Look for the entry matching your router IP and copy the physical address.
+
+NETSETTINGS AREN'T SAVED YET YOU HAVE TO REDOO THEM ON REBOOT, ILL FIX IT PROMISSE <3
+
+---
+
 ## Architecture
 The kernel is written in C with the boot and mode-switching code in NASM assembly. The screen is driven by direct writes to VGA text mode memory at `0xB8000`. There is no external runtime, no standard library, and no borrowed kernel subsystem anywhere.
 
