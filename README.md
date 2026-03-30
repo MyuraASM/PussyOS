@@ -146,3 +146,6 @@ The kernel is written in C with the boot and mode-switching code in NASM assembl
 ---
 
 Built by Myura.
+Any questions or help:
+Discord-  mynuramy
+X-  MyuraASM
